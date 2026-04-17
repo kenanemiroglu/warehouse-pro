@@ -1,4 +1,4 @@
-name: Build & Release
+name: Build
 
 on:
   push:
@@ -20,7 +20,5 @@ jobs:
       - name: Install
         run: npm install
 
-      - name: Build & Publish
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run release
+      - name: Build App
+        run: npm run build
