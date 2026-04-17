@@ -1,24 +1,24 @@
-name: Build
-
-on:
-  push:
-    tags:
-      - "v*"
-
-jobs:
-  build:
-    runs-on: windows-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install
-        run: npm install
-
-      - name: Build App
-        run: npm run build
+{
+  "name": "warehouse-pro",
+  "version": "1.0.0",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "release": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.6.0"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.0"
+  },
+  "build": {
+    "appId": "com.company.warehouse",
+    "productName": "Warehouse Pro",
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
