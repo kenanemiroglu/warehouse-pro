@@ -7,7 +7,16 @@ function createWindow() {
     height: 700
   });
 
-  const filePath = path.join(__dirname, "..", "renderer", "index.html");
+  let filePath;
+
+  if (app.isPackaged) {
+    // build sonrası doğru yol
+    filePath = path.join(process.resourcesPath, "renderer", "index.html");
+  } else {
+    // geliştirme (local)
+    filePath = path.join(__dirname, "..", "renderer", "index.html");
+  }
+
   win.loadFile(filePath);
 }
 
